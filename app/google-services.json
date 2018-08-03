@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "937112287970",
+    "firebase_url": "https://telepro-fafbb.firebaseio.com",
+    "project_id": "telepro-fafbb",
+    "storage_bucket": "telepro-fafbb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937112287970:android:a5d164d5c3b64da3",
+        "android_client_info": {
+          "package_name": "com.example.android.telepro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937112287970-16u9e39c40s9r4ll97qoinuksh8p0k9f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.telepro",
+            "certificate_hash": "54232630c331db1e9585ad30dcc7a6a0b3e7e5b5"
+          }
+        },
+        {
+          "client_id": "937112287970-reaves0aamghrpseh4s2v4lln3uovsg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmBLt2ooqNl-LP44Z5GCBD5hX3eZBxxJw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937112287970-reaves0aamghrpseh4s2v4lln3uovsg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

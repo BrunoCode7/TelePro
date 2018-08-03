@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">TelePro</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    //navigation bar items
+    <string name="settings">TelePro Settings</string>
+    <string name="nav_main_screen">Main Screen</string>
+
+
+    <string name="subject_hint">Subject</string>
+    <string name="article_hint">Article body</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+</resources>

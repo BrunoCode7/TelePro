@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'key123'
+            keyPassword 'telepro123'
+            storeFile file('../keystore.jks')
+            storePassword 'telepro123'
+        }
+    }
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.example.android.telepro"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.config
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:preference-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    //import the hover widget library
+    implementation project(':headwidget')
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //ayltai/Android-Lib-VerticalMarqueeTextView
+    implementation 'android.lib.verticalmarqueetextview:VerticalMarqueeTextView:+'
+    //Google Ads
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+}
+
+apply plugin: 'com.google.gms.google-services'
