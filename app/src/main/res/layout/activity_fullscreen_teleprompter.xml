@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:example="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:keepScreenOn="true"
@@ -12,15 +12,15 @@
     android:layout_marginEnd="8dp"
     android:scrollbars="none">
 
-<android.lib.widget.verticalmarqueetextview.VerticalMarqueeTextView
+<TextView
     android:id="@+id/telepro_textview_fs"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    example:marqueeSpeed="25"
-    example:textSize="20dp"
-    example:textColor="@android:color/black"
-    example:textStyle="bold" />
+    android:textSize="35sp"
+    android:textColor="@android:color/black"
+    android:textStyle="bold"
+    android:scrollbars="none"
+    />
 
-</LinearLayout>
+</ScrollView>

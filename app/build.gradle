@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'key123'
             keyPassword 'telepro123'
-            storeFile file('../keystore.jks')
+            storeFile file("keystore.jks")
             storePassword 'telepro123'
         }
     }
@@ -40,8 +40,6 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //ayltai/Android-Lib-VerticalMarqueeTextView
-    implementation 'android.lib.verticalmarqueetextview:VerticalMarqueeTextView:+'
     //Google Ads
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
 }

@@ -14,4 +14,11 @@
     <string name="article_hint">Article body</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <string name="fap_content_description">Add Article</string>
+
+    //Toast strings
+
+    <string name="successfully_updated">Article Saved Successfully</string>
+    <string name="failed">updating canceled, please insert a subject and an article</string>
 </resources>

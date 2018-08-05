@@ -64,7 +64,7 @@ public class ArticleScreen extends AppCompatActivity {
         String subject = subjectEt.getText().toString();
         String article = articleEt.getText().toString();
         if (subject.length() == 0 || article.length() == 0) {
-            Toast.makeText(getApplicationContext(), "Saving canceled, please insert a subject and an article", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.failed), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -74,7 +74,7 @@ public class ArticleScreen extends AppCompatActivity {
 
         Uri uri = getContentResolver().insert(CONTENT_URI, contentValues);
         if (uri != null) {
-            Toast.makeText(getApplicationContext(), "Article Saved Successfully", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.successfully_updated), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -82,7 +82,7 @@ public class ArticleScreen extends AppCompatActivity {
         String subject = subjectEt.getText().toString();
         String article = articleEt.getText().toString();
         if (subject.length() == 0||article.length() == 0) {
-            Toast.makeText(getApplicationContext(), "updating canceled, please insert a subject and an article", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.failed), Toast.LENGTH_SHORT).show();
             return; }
 
         ContentValues contentValues = new ContentValues();
@@ -91,6 +91,6 @@ public class ArticleScreen extends AppCompatActivity {
 
         int rows = getContentResolver().update(CONTENT_URI.buildUpon().appendPath(String.valueOf(id)).build(), contentValues, null, null);
         if (rows != 0) {
-            Toast.makeText(getApplicationContext(), "Article updated Successfully", Toast.LENGTH_SHORT).show(); }
+            Toast.makeText(getApplicationContext(),getString(R.string.successfully_updated), Toast.LENGTH_SHORT).show(); }
     }
 }

@@ -1,11 +1,11 @@
 package com.example.android.headwidget;
 
+import android.animation.ObjectAnimator;
 import android.app.Service;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.PixelFormat;
 import android.graphics.Point;
-import android.lib.widget.verticalmarqueetextview.VerticalMarqueeTextView;
 import android.os.Build;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -15,6 +15,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Baraa Hesham on 7/24/2018.
@@ -23,10 +26,12 @@ public class HoveredWidgetService extends Service implements View.OnClickListene
     private WindowManager mWindowManager;
     private View mHoveredWidgetView, collapsedView, expandedView;
     private Point szWindow = new Point();
-    private VerticalMarqueeTextView textView;
+    private TextView textView;
     private int x_init_cord, y_init_cord, x_init_margin, y_init_margin;
     private SharedPreferences sharedPreferences;
     public static final String ARTICLE_STRING_KEY="widget_string";
+    ScrollView scrollView;
+
 
     public HoveredWidgetService() {
     }
@@ -49,6 +54,8 @@ public class HoveredWidgetService extends Service implements View.OnClickListene
         mHoveredWidgetView.findViewById(R.id.close_floating_view).setOnClickListener(this);
         mHoveredWidgetView.findViewById(R.id.close_expanded_view).setOnClickListener(this);
         implementTouchListenerToFloatingWidgetView();
+
+
     }
 
 
@@ -56,10 +63,8 @@ public class HoveredWidgetService extends Service implements View.OnClickListene
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (intent != null) {
             String article = (String) intent.getExtras().get(ARTICLE_STRING_KEY);
-            textView = mHoveredWidgetView.findViewById(R.id.floating_widget_detail_label);
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            int speed = sharedPreferences.getInt("seek_bar_key_hovered", 10);
-            textView.setMarqueeSpeed(speed);
+
+
             textView.setText(article);
         }
 
@@ -92,6 +97,8 @@ public class HoveredWidgetService extends Service implements View.OnClickListene
         mWindowManager.addView(mHoveredWidgetView, params);
         collapsedView = mHoveredWidgetView.findViewById(R.id.collapse_view);
         expandedView = mHoveredWidgetView.findViewById(R.id.expanded_container);
+        textView = mHoveredWidgetView.findViewById(R.id.floating_widget_detail_label);
+        scrollView=mHoveredWidgetView.findViewById(R.id.hovered_scroll);
 
     }
 
@@ -171,7 +178,7 @@ public class HoveredWidgetService extends Service implements View.OnClickListene
             stopSelf();
 
         } else if (i == R.id.close_expanded_view) {
-            textView.stopMarquee();
+//            textView.stopMarquee();
             collapsedView.setVisibility(View.VISIBLE);
             expandedView.setVisibility(View.GONE);
         }
@@ -187,7 +194,17 @@ public class HoveredWidgetService extends Service implements View.OnClickListene
 
     private void onFloatingWidgetClick() {
         if (isViewCollapsed()) {
-            textView.startMarquee();
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            final int speed = sharedPreferences.getInt("seek_bar_key_hovered", 10);
+            scrollView.post(new Runnable() {
+                @Override
+                public void run() {
+                    ObjectAnimator objectAnimator = ObjectAnimator.ofInt(scrollView,"scrollY", 0, scrollView.getBottom());
+                    objectAnimator.setDuration(500000/speed);
+                    objectAnimator.start();
+                }
+            });
+//            textView.startMarquee();
             collapsedView.setVisibility(View.GONE);
             expandedView.setVisibility(View.VISIBLE);
         }

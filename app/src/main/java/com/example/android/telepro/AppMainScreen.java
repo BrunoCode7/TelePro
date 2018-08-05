@@ -57,13 +57,12 @@ public class AppMainScreen extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         fullScreenModeSettingsFragment = new FullScreenModeSettingsFragment();
-
-
         android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         mainScreenFragment = new MainScreenFragment();
-        fragmentTransaction.add(R.id.main_container, mainScreenFragment);
-        fragmentTransaction.commit();
-
+        if (savedInstanceState==null) {
+            fragmentTransaction.add(R.id.main_container, mainScreenFragment);
+            fragmentTransaction.commit();
+        }
     }
 
     @Override
